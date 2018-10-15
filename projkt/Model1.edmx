@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="text" Type="text" Nullable="false" />
+          <Property Name="order_id" Type="int" />
+          <Property Name="company_id" Type="int" />
+          <Property Name="type_id" Type="int" />
+          <Property Name="rating" Type="int" />
+        </EntityType>
+        <EntityType Name="CommentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="label" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="logo_url" Type="varchar" MaxLength="1000" />
+          <Property Name="avg_rating" Type="int" />
+          <Property Name="pricing_pct" Type="int" />
+          <Property Name="register_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CompanyTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="label" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="GeneralProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="category" Type="varchar" MaxLength="30" />
+          <Property Name="cook_duration" Type="int" />
+          <Property Name="global_code" Type="int" />
+          <Property Name="company_id" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderMeals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="company_id" Type="int" Nullable="false" />
+          <Property Name="total_amount" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Rating" Type="int" />
+        </EntityType>
+        <EntityContainer Name="RMSModelStoreContainer">
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentTypes" EntityType="Self.CommentTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyTypes" EntityType="Self.CompanyTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneralProducts" EntityType="Self.GeneralProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderMeals" EntityType="Self.OrderMeals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="company_id" Type="Int32" />
+          <Property Name="type_id" Type="Int32" />
+          <Property Name="rating" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CommentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="label" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="logo_url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="avg_rating" Type="Int32" />
+          <Property Name="pricing_pct" Type="Int32" />
+          <Property Name="register_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CompanyType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="label" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GeneralProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="category" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cook_duration" Type="Int32" />
+          <Property Name="global_code" Type="Int32" />
+          <Property Name="company_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OrderMeal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="company_id" Type="Int32" Nullable="false" />
+          <Property Name="total_amount" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Rating" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="RMSEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="CommentTypes" EntityType="Self.CommentType" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="CompanyTypes" EntityType="Self.CompanyType" />
+          <EntitySet Name="GeneralProducts" EntityType="Self.GeneralProduct" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="OrderMeals" EntityType="Self.OrderMeal" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RMSModelStoreContainer" CdmEntityContainer="RMSEntities3">
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="RMSModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentTypes">
+            <EntityTypeMapping TypeName="RMSModel.CommentType">
+              <MappingFragment StoreEntitySet="CommentTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="RMSModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="logo_url" ColumnName="logo_url" />
+                <ScalarProperty Name="avg_rating" ColumnName="avg_rating" />
+                <ScalarProperty Name="pricing_pct" ColumnName="pricing_pct" />
+                <ScalarProperty Name="register_date" ColumnName="register_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyTypes">
+            <EntityTypeMapping TypeName="RMSModel.CompanyType">
+              <MappingFragment StoreEntitySet="CompanyTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="label" ColumnName="label" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneralProducts">
+            <EntityTypeMapping TypeName="RMSModel.GeneralProduct">
+              <MappingFragment StoreEntitySet="GeneralProducts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="RMSModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="cook_duration" ColumnName="cook_duration" />
+                <ScalarProperty Name="global_code" ColumnName="global_code" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderMeals">
+            <EntityTypeMapping TypeName="RMSModel.OrderMeal">
+              <MappingFragment StoreEntitySet="OrderMeals">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="RMSModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RMSModelStoreContainer" CdmEntityContainer="RMSEntities3">
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="RMSModel.Comment">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="type_id" ColumnName="type_id" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommentTypes">
+      <EntityTypeMapping TypeName="RMSModel.CommentType">
+        <MappingFragment StoreEntitySet="CommentTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="label" ColumnName="label" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="RMSModel.Company">
+        <MappingFragment StoreEntitySet="Companies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="logo_url" ColumnName="logo_url" />
+          <ScalarProperty Name="avg_rating" ColumnName="avg_rating" />
+          <ScalarProperty Name="pricing_pct" ColumnName="pricing_pct" />
+          <ScalarProperty Name="register_date" ColumnName="register_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyTypes">
+      <EntityTypeMapping TypeName="RMSModel.CompanyType">
+        <MappingFragment StoreEntitySet="CompanyTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="label" ColumnName="label" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GeneralProducts">
+      <EntityTypeMapping TypeName="RMSModel.GeneralProduct">
+        <MappingFragment StoreEntitySet="GeneralProducts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="RMSModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="cook_duration" ColumnName="cook_duration" />
+          <ScalarProperty Name="global_code" ColumnName="global_code" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderMeals">
+      <EntityTypeMapping TypeName="RMSModel.OrderMeal">
+        <MappingFragment StoreEntitySet="OrderMeals">
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="RMSModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

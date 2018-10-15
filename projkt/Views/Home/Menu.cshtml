@@ -1,0 +1,86 @@
+﻿@model IEnumerable<KeyValuePair<string,projkt.Menu> >
+
+@{
+    ViewBag.Title = "Menu";
+    var products = ViewBag.foodNames;
+}
+
+
+<h2>@ViewBag.Header</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form action="../Order/Make" method="POST">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Value.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value.cook_duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value.global_code)
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td id="prc-@item.Value.Id">
+                    @Html.DisplayFor(modelItem => item.Value.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value.category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Value.cook_duration)
+                </td>
+                <td>
+                    @item.Key
+                    <input id ="hd-@item.Value.Id" type="hidden" name="@item.Value.global_code" value="0"/>
+                </td>
+                <td id="num-@item.Value.Id">0</td>
+                <td>
+                    <button type="button" id="@item.Value.Id" class="btn btn-dark">Add To Cart</button>
+
+                </td>
+            </tr>
+        }
+
+
+    </table>
+    <input type="hidden" name="company_id" value="@Model.First().Value.company_id" />
+    <input value="Make An Order" type="submit" class="btn btn-info" />
+    <h4>Total Price: <span id="total">0</span> $</h4>
+</form>
+
+<script>
+    var total = 0;
+    document.querySelectorAll('button').forEach(key => {
+
+        key.addEventListener('click', () => {
+            let label = document.getElementById('num-' + key.id);
+            let quantity = parseInt(label.innerHTML);
+            label.innerHTML = quantity + 1;
+
+            let price = parseInt(document.getElementById('prc-' + key.id).innerHTML);
+
+            total += price;
+            document.getElementById('total').innerHTML = total;
+
+            let hidden = document.getElementById('hd-' + key.id).value = quantity + 1;
+        });
+    });
+
+
+</script>

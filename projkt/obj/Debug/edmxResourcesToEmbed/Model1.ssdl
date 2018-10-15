@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="text" Type="text" Nullable="false" />
+    <Property Name="order_id" Type="int" />
+    <Property Name="company_id" Type="int" />
+    <Property Name="type_id" Type="int" />
+    <Property Name="rating" Type="int" />
+  </EntityType>
+  <EntityType Name="CommentTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="label" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="logo_url" Type="varchar" MaxLength="1000" />
+    <Property Name="avg_rating" Type="int" />
+    <Property Name="pricing_pct" Type="int" />
+    <Property Name="register_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CompanyTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="label" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="GeneralProducts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="category" Type="varchar" MaxLength="30" />
+    <Property Name="cook_duration" Type="int" />
+    <Property Name="global_code" Type="int" />
+    <Property Name="company_id" Type="int" />
+  </EntityType>
+  <EntityType Name="OrderMeals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="company_id" Type="int" Nullable="false" />
+    <Property Name="total_amount" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Rating" Type="int" />
+  </EntityType>
+  <EntityContainer Name="RMSModelStoreContainer">
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommentTypes" EntityType="Self.CommentTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompanyTypes" EntityType="Self.CompanyTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeneralProducts" EntityType="Self.GeneralProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderMeals" EntityType="Self.OrderMeals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

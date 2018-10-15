@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Menu";
+}
+
+@model List<projkt.GeneralProduct>
+
+<h2>Menu</h2>
+<form method="POST" action="/Create/CreateMenu">
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Include
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Duration
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    <input type="checkbox" name="@item.Name" value="@item.Id">
+                </td>
+                <td>
+                    <input type="number" name='@item.Name-price' placeholder="Price">
+                </td>
+                <td>
+                    <input type="text" name='@item.Name-type' placeholder="Type">
+                </td>
+                <td>
+                    <input type="number" name='@item.Name-duration' placeholder="Duration">
+                </td>
+                
+                
+            </tr>
+        }
+    </table>
+            <input type="hidden" name="-id" value="@ViewBag.id"/>
+            <input type="submit" class="btn btn-default" />
+    </form>
+

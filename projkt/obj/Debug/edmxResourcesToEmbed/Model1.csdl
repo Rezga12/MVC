@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order_id" Type="Int32" />
+    <Property Name="company_id" Type="Int32" />
+    <Property Name="type_id" Type="Int32" />
+    <Property Name="rating" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CommentType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="label" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="logo_url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="avg_rating" Type="Int32" />
+    <Property Name="pricing_pct" Type="Int32" />
+    <Property Name="register_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="CompanyType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="label" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="GeneralProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="category" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="cook_duration" Type="Int32" />
+    <Property Name="global_code" Type="Int32" />
+    <Property Name="company_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="OrderMeal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="company_id" Type="Int32" Nullable="false" />
+    <Property Name="total_amount" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Rating" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="RMSEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="CommentTypes" EntityType="Self.CommentType" />
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="CompanyTypes" EntityType="Self.CompanyType" />
+    <EntitySet Name="GeneralProducts" EntityType="Self.GeneralProduct" />
+    <EntitySet Name="Menus" EntityType="Self.Menu" />
+    <EntitySet Name="OrderMeals" EntityType="Self.OrderMeal" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+  </EntityContainer>
+</Schema>
